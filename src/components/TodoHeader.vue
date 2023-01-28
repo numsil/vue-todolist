@@ -7,11 +7,7 @@
   </div>
 </template>
 
-<script lang="ts" setup>
-import { ref } from "vue";
-
-const test = ref("");
-</script>
+<script lang="ts" setup></script>
 
 <style scoped lang="scss">
 .header {
@@ -28,6 +24,7 @@ const test = ref("");
     margin-right: auto;
     padding-left: 45px;
     margin-bottom: 5px;
+    padding-top: 10px;
   }
 }
 .add-task {
