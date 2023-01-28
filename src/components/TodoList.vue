@@ -1,10 +1,10 @@
 <template>
   <ul class="list">
     <div class="list-box">
-      <li class="list-item">
+      <li class="list-item" v-for="todo in props.textInput">
         <label class="list-item-label">
           <input type="checkbox" />
-          <span>list item</span>
+          <span>{{ todo }}</span>
         </label>
         <span class="delete-btn"></span>
       </li>
@@ -15,9 +15,14 @@
 <script lang="ts" setup>
 import { ref } from "vue";
 
-const message = ref("");
+const textInput = ref([]);
 
-const todoTextBox = () => {};
+const props = defineProps({
+  textInput: {
+    type: Array,
+    default: () => {},
+  },
+});
 </script>
 
 <style scoped lang="scss">

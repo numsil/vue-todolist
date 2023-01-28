@@ -2,12 +2,30 @@
   <div class="header">
     <h1 class="title">Todo List</h1>
     <div class="add-task">
-      <input type="text" class="task-input" />
+      <input
+        type="text"
+        class="task-input"
+        v-model="textInput"
+        @keyup.enter="addNewTodo"
+      />
     </div>
   </div>
 </template>
 
-<script lang="ts" setup></script>
+<script lang="ts" setup>
+import { Ref, ref } from "vue";
+
+let textInput = ref("");
+// const todoList = ref([]);
+const emit = defineEmits(["addNewTodo"]);
+
+const addNewTodo = () => {
+  emit("addNewTodo", textInput.value);
+  textInput.value = "";
+};
+
+console.log("list===>", textInput);
+</script>
 
 <style scoped lang="scss">
 .header {

@@ -1,14 +1,21 @@
 <template>
   <div class="abc">
     <div class="abc-degin">
-      <TodoHeader />
-      <TodoList />
+      <TodoHeader @addNewTodo="onAddNewTodo" />
+      <TodoList :textInput="textInput" @addNewTodo="onAddNewTodo" />
     </div>
   </div>
 </template>
 <script setup lang="ts">
+import { ref } from "vue";
 import TodoHeader from "./components/TodoHeader.vue";
 import TodoList from "./components/TodoList.vue";
+
+let textInput = ref("");
+
+const onAddNewTodo = (text: string) => {
+  textInput.value = text;
+};
 </script>
 
 <style scoped lang="scss">
