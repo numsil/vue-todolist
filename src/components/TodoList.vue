@@ -6,7 +6,8 @@
           <input type="checkbox" />
           <span>{{ todo }}</span>
         </label>
-        <span class="delete-btn"></span>
+        <button class="delete-btn"></button>
+        <!-- <icon-base :icon-name="deleteIcon"></icon-base> -->
       </li>
     </div>
   </ul>
@@ -14,8 +15,10 @@
 
 <script lang="ts" setup>
 import { ref } from "vue";
+// import deleteSVG from "@/deleteIcon.svg";
 
 const textInput = ref([]);
+// const deleteIcon = ref(deleteSVG);
 
 const props = defineProps({
   textInput: {
@@ -80,7 +83,7 @@ const props = defineProps({
 // }
 .delete-btn {
   margin-left: auto;
-  margin-right: 5px;
+  margin-right: 20px;
   display: block;
   width: 16px;
   height: 16px;
