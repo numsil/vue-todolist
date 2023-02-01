@@ -7,6 +7,7 @@
           <span>{{ todo }}</span>
         </label>
         <button class="delete-btn"></button>
+        <deleteSVG></deleteSVG>
         <!-- <icon-base :icon-name="deleteIcon"></icon-base> -->
       </li>
     </div>
@@ -15,7 +16,7 @@
 
 <script lang="ts" setup>
 import { ref } from "vue";
-// import deleteSVG from "@/deleteIcon.svg";
+import deleteSVG from "@/icons/deleteIcon.svg";
 
 const textInput = ref([]);
 // const deleteIcon = ref(deleteSVG);
