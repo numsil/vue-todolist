@@ -7,17 +7,10 @@
       </label>
       <span class="delete-btn"></span>
     </li>
-    <!-- <span>여러 줄 메세지:</span>
-    <p style="white-space: pre-line">{{ message }}</p>
-    <textarea v-model="message" placeholder="여러 줄을 추가해보세요"></textarea> -->
   </ul>
 </template>
 
-<script lang="ts" setup>
-import { ref } from "vue";
-
-const message = ref("");
-</script>
+<script lang="ts" setup></script>
 
 <style scoped lang="scss">
 .list {
