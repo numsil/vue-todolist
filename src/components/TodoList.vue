@@ -1,36 +1,72 @@
 <template>
   <ul class="list">
-    <li class="list-item">
-      <label class="list-item-label">
-        <input type="checkbox" />
-        <span>list item</span>
-      </label>
-      <span class="delete-btn"></span>
-    </li>
+    <div class="list-box">
+      <li class="list-item" v-for="todo in props.textInput">
+        <label class="list-item-label">
+          <input type="checkbox" />
+          <span>{{ todo }}</span>
+        </label>
+        <Icon :type="delete" class="delete_btn"></Icon>
+      </li>
+    </div>
   </ul>
 </template>
 
-<script lang="ts" setup></script>
+<script lang="ts" setup>
+import { ref } from "vue";
+import Icon from "./common/icon.vue";
+
+const textInput = ref([]);
+// const deleteIcon = ref(deleteSVG);
+
+const props = defineProps({
+  textInput: {
+    type: Array,
+    default: () => {},
+  },
+});
+</script>
 
 <style scoped lang="scss">
 .list {
-  height: 450px;
+  display: flex;
+  flex-direction: column;
+  height: 300px;
   background-color: rgb(255, 255, 255, 0.2);
-  padding-top: 10px;
   padding: 45px;
   padding-top: 20px;
+  padding-bottom: 20px;
   border-bottom-left-radius: 20px;
   border-bottom-right-radius: 20px;
   margin: 0;
+
+  .list-item {
+    display: flex;
+    background: white;
+    flex-direction: row;
+    align-items: center;
+    height: 40px;
+    border-radius: 20px;
+    border: 1px solid #e5e7e9;
+    margin-bottom: 5px;
+    .list-item-label {
+      display: flex;
+      align-items: flex-start;
+      color: #272727;
+
+      margin-left: 10px;
+      font-size: 14px;
+      line-height: 26px;
+      position: relative;
+      cursor: pointer;
+      span {
+        padding-left: 5px;
+      }
+    }
+  }
 }
-.list-item {
-  display: flex;
-  background: white;
-  flex-direction: row;
-  align-items: center;
-  height: 40px;
-  border-radius: 20px;
-  border: 1px solid #e5e7e9;
+.list-box {
+  overflow-y: scroll;
 }
 .list-item input {
   width: 16px;
@@ -44,23 +80,9 @@
 //   color: gray;
 //   text-decoration: line-through gray;
 // }
-.list-item-label {
-  display: flex;
-  align-items: flex-start;
-  color: #272727;
-
-  margin-left: 10px;
-  font-size: 14px;
-  line-height: 26px;
-  position: relative;
-  cursor: pointer;
-  span {
-    padding-left: 5px;
-  }
-}
 .delete-btn {
   margin-left: auto;
-  margin-right: 5px;
+  margin-right: 20px;
   display: block;
   width: 16px;
   height: 16px;
