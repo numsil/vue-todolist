@@ -5,26 +5,33 @@
       <input
         type="text"
         class="task-input"
-        v-model="textInput"
-        @keyup.enter="addNewTodo"
+        v-model="newTextInput"
+        placeholder="할 일 작성"
+        @keypress.enter="addNewTodo"
       />
+      <div class="icon-container">
+        <Icon type="plus" @click="addNewTodo" />
+      </div>
     </div>
   </div>
 </template>
 
 <script lang="ts" setup>
-import { Ref, ref } from "vue";
+import { ref } from "vue";
+import Icon from "./common/icon.vue";
 
-let textInput = ref("");
-// const todoList = ref([]);
+const newTextInput = ref("");
+const textInput = ref([] as string[]);
+
+console.log("input", textInput);
+
 const emit = defineEmits(["addNewTodo"]);
 
 const addNewTodo = () => {
+  textInput.value.push(newTextInput.value);
   emit("addNewTodo", textInput.value);
-  textInput.value = "";
+  newTextInput.value = "";
 };
-
-console.log("list===>", textInput);
 </script>
 
 <style scoped lang="scss">
@@ -57,5 +64,11 @@ console.log("list===>", textInput);
   border: none;
   outline: none;
   border-bottom: 1px solid gray;
+}
+.icon-container {
+  display: inline-block;
+  position: relative;
+  margin-left: 10px;
+  top: -2px;
 }
 </style>

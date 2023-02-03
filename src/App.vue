@@ -11,10 +11,11 @@ import { ref } from "vue";
 import TodoHeader from "./components/TodoHeader.vue";
 import TodoList from "./components/TodoList.vue";
 
-let textInput = ref("");
+const textInput = ref("");
 
 const onAddNewTodo = (text: string) => {
   textInput.value = text;
+  // textInput = text;
 };
 </script>
 

@@ -1,12 +1,15 @@
 <template>
   <ul class="list">
     <div class="list-box">
-      <li class="list-item" v-for="todo in props.textInput">
+      <li class="list-item" v-for="(todo, index) in props.textInput">
         <label class="list-item-label">
           <input type="checkbox" />
           <span>{{ todo }}</span>
         </label>
-        <Icon :type="delete" class="delete_btn"></Icon>
+        <span class="delete_btn">
+          <Icon type="delete" @click="handleClickDeleteButton(index)" />
+        </span>
+        <!-- <Icon :type="delete" class="delete_btn"></Icon> -->
       </li>
     </div>
   </ul>
@@ -16,7 +19,6 @@
 import { ref } from "vue";
 import Icon from "./common/icon.vue";
 
-const textInput = ref([]);
 // const deleteIcon = ref(deleteSVG);
 
 const props = defineProps({
@@ -25,6 +27,11 @@ const props = defineProps({
     default: () => {},
   },
 });
+
+const handleClickDeleteButton = (index: number) => {
+  props.textInput.splice(index, 1);
+};
+console.log(props.textInput);
 </script>
 
 <style scoped lang="scss">
@@ -38,6 +45,7 @@ const props = defineProps({
   padding-bottom: 20px;
   border-bottom-left-radius: 20px;
   border-bottom-right-radius: 20px;
+
   margin: 0;
 
   .list-item {
@@ -49,6 +57,7 @@ const props = defineProps({
     border-radius: 20px;
     border: 1px solid #e5e7e9;
     margin-bottom: 5px;
+    justify-content: space-between;
     .list-item-label {
       display: flex;
       align-items: flex-start;
@@ -80,11 +89,7 @@ const props = defineProps({
 //   color: gray;
 //   text-decoration: line-through gray;
 // }
-.delete-btn {
-  margin-left: auto;
-  margin-right: 20px;
-  display: block;
-  width: 16px;
-  height: 16px;
+.delete_btn {
+  padding-right: 10px;
 }
 </style>
