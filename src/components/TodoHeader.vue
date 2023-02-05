@@ -7,6 +7,7 @@
         class="task-input"
         v-model="newTextInput"
         placeholder="할 일 작성"
+        ref="input"
         @keypress.enter="addNewTodo"
       />
       <div class="icon-container">
@@ -17,7 +18,7 @@
 </template>
 
 <script lang="ts" setup>
-import { ref } from "vue";
+import { onMounted, ref } from "vue";
 import Icon from "./common/icon.vue";
 
 const newTextInput = ref("");
@@ -28,10 +29,20 @@ console.log("input", textInput);
 const emit = defineEmits(["addNewTodo"]);
 
 const addNewTodo = () => {
-  textInput.value.push(newTextInput.value);
-  emit("addNewTodo", textInput.value);
-  newTextInput.value = "";
+  if (newTextInput.value) {
+    textInput.value.push(newTextInput.value);
+    // localStorage.setItem("inputData", textInput);
+    emit("addNewTodo", textInput.value);
+    newTextInput.value = "";
+    (this as any).$ref.input.focus();
+  }
 };
+onMounted(() => {
+  const storedData = localStorage.getItem("textInput");
+  if (storedData) {
+    textInput.value = JSON.parse(storedData);
+  }
+});
 </script>
 
 <style scoped lang="scss">

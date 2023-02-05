@@ -9,7 +9,6 @@
         <span class="delete_btn">
           <Icon type="delete" @click="handleClickDeleteButton(index)" />
         </span>
-        <!-- <Icon :type="delete" class="delete_btn"></Icon> -->
       </li>
     </div>
   </ul>
@@ -18,8 +17,6 @@
 <script lang="ts" setup>
 import { ref } from "vue";
 import Icon from "./common/icon.vue";
-
-// const deleteIcon = ref(deleteSVG);
 
 const props = defineProps({
   textInput: {
