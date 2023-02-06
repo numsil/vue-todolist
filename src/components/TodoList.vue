@@ -7,7 +7,11 @@
           <span>{{ todo }}</span>
         </label>
         <span class="delete_btn">
-          <Icon type="delete" @click="handleClickDeleteButton(index)" />
+          <Icon
+            type="delete"
+            @click="handleClickDeleteButton(index)"
+            class="delete_icon"
+          />
         </span>
       </li>
     </div>
@@ -88,5 +92,9 @@ console.log(props.textInput);
 // }
 .delete_btn {
   padding-right: 10px;
+}
+
+.delete_icon:hover {
+  color: #df9a9a;
 }
 </style>

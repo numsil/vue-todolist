@@ -1,7 +1,9 @@
 <!-- 메인 -->
 <template>
-  <div class="abc">
-    <div class="abc-degin">
+  <div class="main-todolist">
+    <div class="main-date"><TodoDate /></div>
+
+    <div class="main-todobox">
       <TodoHeader @addNewTodo="onAddNewTodo" />
       <TodoList :textInput="textInput" @addNewTodo="onAddNewTodo" />
     </div>
@@ -11,6 +13,7 @@
 import { ref } from "vue";
 import TodoHeader from "./components/TodoHeader.vue";
 import TodoList from "./components/TodoList.vue";
+import TodoDate from "./components/TodaDate.vue";
 
 const textInput = ref("");
 
@@ -26,7 +29,7 @@ html {
   margin: 0 auto;
   padding: 0;
 }
-.abc {
+.main-todolist {
   height: 100vh;
   background: linear-gradient(
     to right top,
@@ -44,7 +47,7 @@ html {
     #5ffbf1
   );
 }
-.abc-degin {
+.main-todobox {
   display: flex;
   flex-direction: column;
   width: 600px;
@@ -54,6 +57,17 @@ html {
   margin: 0 auto;
   position: absolute;
   top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.main-date {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  width: 600px;
+  height: 50px;
+  top: 10%;
   left: 50%;
   transform: translate(-50%, -50%);
 }

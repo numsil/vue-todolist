@@ -37,12 +37,12 @@ const addNewTodo = () => {
     (this as any).$ref.input.focus();
   }
 };
-onMounted(() => {
-  const storedData = localStorage.getItem("textInput");
-  if (storedData) {
-    textInput.value = JSON.parse(storedData);
-  }
-});
+// onMounted(() => {
+//   const storedData = localStorage.getItem("textInput");
+//   if (storedData) {
+//     textInput.value = JSON.parse(storedData);
+//   }
+// });
 </script>
 
 <style scoped lang="scss">

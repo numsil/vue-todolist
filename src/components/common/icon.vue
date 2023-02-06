@@ -1,17 +1,26 @@
 <template>
-  <i :type="type"></i>
+  <i :type="type" :style="styles"></i>
 </template>
 
 <script setup lang="ts">
+import { computed } from "vue";
+
 const props = defineProps({
   type: {
     type: String,
     default: "setting",
   },
-  // color: {
-  //   type: String,
-  //   default: null,
-  // },
+  color: {
+    type: String,
+    default: null,
+  },
+});
+const styles = computed(() => {
+  const stylesObj = {};
+  if (props.color) {
+    stylesObj["background-color"] = props.color;
+  }
+  return stylesObj;
 });
 </script>
 
@@ -29,6 +38,7 @@ i {
   -webkit-mask-repeat: no-repeat;
   mask-position: 50% 50%;
   -webkit-mask-position: 50% 50%;
+
   &[type="delete"] {
     -webkit-mask-image: url(@/assets/icons/iconDel.svg);
     mask-image: url(@/assets/icons/iconDel.svg);
