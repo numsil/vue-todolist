@@ -1,6 +1,6 @@
 import { defineConfig } from "vite";
 import vue from "@vitejs/plugin-vue";
-import path from "path";
+import path from "path"; // node의 path 메소드 호출
 
 // const path = require("path");
 // const path = require("path");
