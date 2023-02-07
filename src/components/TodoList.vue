@@ -4,7 +4,7 @@
       <li class="list-item" v-for="(todo, index) in props.textInput">
         <label class="list-item-label">
           <input type="checkbox" />
-          <span>{{ todo }}</span>
+          <span class="todo-text">{{ todo }}</span>
         </label>
         <span class="delete_btn">
           <Icon
@@ -19,7 +19,7 @@
 </template>
 
 <script lang="ts" setup>
-import { ref } from "vue";
+import { onMounted, ref } from "vue";
 import Icon from "./common/icon.vue";
 
 const props = defineProps({
@@ -33,6 +33,13 @@ const handleClickDeleteButton = (index: number) => {
   props.textInput.splice(index, 1);
 };
 console.log(props.textInput);
+
+// onMounted(() => {
+//   const storedData = localStorage.getItem("inputData");
+//   if (storedData) {
+//     props.textInput = JSON.parse(storedData);
+//   }
+// });
 </script>
 
 <style scoped lang="scss">
@@ -77,6 +84,10 @@ console.log(props.textInput);
 }
 .list-box {
   overflow-y: scroll;
+}
+.todo-text {
+  font-family: "Jua", sans-serif;
+  color: #575655;
 }
 .list-item input {
   width: 16px;

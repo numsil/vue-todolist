@@ -24,8 +24,6 @@ import Icon from "./common/icon.vue";
 const newTextInput = ref("");
 const textInput = ref([] as string[]);
 
-console.log("input", textInput);
-
 const emit = defineEmits(["addNewTodo"]);
 
 const addNewTodo = () => {
@@ -68,15 +66,19 @@ const addNewTodo = () => {
   display: flex;
   width: 500px;
   height: 30px;
-  font-size: 16;
 }
 .task-input {
   background-color: rgb(255, 255, 255, 0);
   width: 100%;
   border: none;
+  color: #575655;
   outline: none;
+  font-family: "Jua", sans-serif;
   border-bottom: 1px solid gray;
 }
+// .task-input input {
+//   color: gray !important;
+// }
 .icon-container {
   display: inline-block;
   position: relative;
