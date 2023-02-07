@@ -31,14 +31,14 @@ const emit = defineEmits(["addNewTodo"]);
 const addNewTodo = () => {
   if (newTextInput.value) {
     textInput.value.push(newTextInput.value);
-    // localStorage.setItem("inputData", textInput);
+    localStorage.setItem("inputData", JSON.stringify(textInput));
     emit("addNewTodo", textInput.value);
     newTextInput.value = "";
     (this as any).$ref.input.focus();
   }
 };
 // onMounted(() => {
-//   const storedData = localStorage.getItem("textInput");
+//   const storedData = localStorage.getItem("inputData");
 //   if (storedData) {
 //     textInput.value = JSON.parse(storedData);
 //   }
@@ -61,6 +61,7 @@ const addNewTodo = () => {
     padding-left: 45px;
     margin-bottom: 5px;
     padding-top: 10px;
+    font-family: "Jua", sans-serif;
   }
 }
 .add-task {

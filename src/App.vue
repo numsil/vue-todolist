@@ -1,8 +1,13 @@
 <!-- 메인 -->
 <template>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cute+Font&family=Hi+Melody&family=Jua&display=swap"
+    rel="stylesheet"
+  />
   <div class="main-todolist">
     <div class="main-date"><TodoDate /></div>
-
     <div class="main-todobox">
       <TodoHeader @addNewTodo="onAddNewTodo" />
       <TodoList :textInput="textInput" @addNewTodo="onAddNewTodo" />
@@ -62,12 +67,13 @@ html {
 }
 .main-date {
   display: flex;
-  justify-content: center;
+  // justify-content: center;
   align-items: center;
   position: absolute;
+  margin-left: 30px;
   width: 600px;
-  height: 50px;
-  top: 10%;
+  height: 150px;
+  top: 12%;
   left: 50%;
   transform: translate(-50%, -50%);
 }
