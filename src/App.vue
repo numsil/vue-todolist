@@ -24,6 +24,7 @@ import TodoList from "./components/TodoList.vue";
 import TodoDate from "./components/TodaDate.vue";
 
 const todos = ref("");
+// const todos = ref<string[]>("");
 
 const onAddNewTodo = (text: string) => {
   todos.value = text;
