@@ -12,7 +12,7 @@
       <div class="main-date"><TodoDate /></div>
       <div class="main-todobox">
         <TodoHeader @addNewTodo="onAddNewTodo" />
-        <TodoList :textInput="textInput" @addNewTodo="onAddNewTodo" />
+        <TodoList :todos="todos" @addNewTodo="onAddNewTodo" />
       </div>
     </div>
   </div>
@@ -23,10 +23,10 @@ import TodoHeader from "./components/TodoHeader.vue";
 import TodoList from "./components/TodoList.vue";
 import TodoDate from "./components/TodaDate.vue";
 
-const textInput = ref("");
+const todos = ref("");
 
 const onAddNewTodo = (text: string) => {
-  textInput.value = text;
+  todos.value = text;
   // textInput = text;
 };
 </script>

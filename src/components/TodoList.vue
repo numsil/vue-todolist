@@ -1,7 +1,7 @@
 <template>
   <ul class="list">
     <div class="list-box">
-      <li class="list-item" v-for="(todo, index) in todos">
+      <li class="list-item" v-for="(todo, index) in props.todos">
         <label class="list-item-label">
           <input type="checkbox" />
           <span class="todo-text">{{ todo }}</span>
@@ -22,27 +22,28 @@
 import { onMounted, ref } from "vue";
 import Icon from "./common/icon.vue";
 
-// const props = defineProps({
-//   textInput: {
-//     type: Array,
-//     default: () => {},
-//   },
-// });
+const props = defineProps({
+  todos: {
+    type: Array,
+    default: () => {},
+  },
+});
 
-let todos = [] as string[];
+// let todos = ref("");
+// let todos = ref<string[]>([]);
 
 const handleClickDeleteButton = (index: number) => {
-  todos.splice(index, 1);
-  localStorage.setItem("inputData", JSON.stringify(todos));
+  props.todos.splice(index, 1);
+  localStorage.setItem("inputData", JSON.stringify(props.todos));
 };
 
-onMounted(() => {
-  const storedData = localStorage.getItem("inputData");
-  if (storedData) {
-    todos = JSON.parse(storedData);
-  }
-  console.log("=====>", todos);
-});
+// onMounted(() => {
+//   const storedData = localStorage.getItem("inputData");
+//   if (storedData) {
+//     todos.value = JSON.parse(storedData);
+//   }
+//   console.log("=====>", todos);
+// });
 </script>
 
 <style scoped lang="scss">
@@ -97,7 +98,7 @@ onMounted(() => {
   height: 16px;
 }
 .list-item input:checked + span {
-  color: gray;
+  color: #c5c5c5;
   text-decoration: line-through gray;
 }
 // .list-item input:hover {

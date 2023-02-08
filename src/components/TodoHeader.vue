@@ -22,19 +22,29 @@ import { onMounted, ref } from "vue";
 import Icon from "./common/icon.vue";
 
 const newTextInput = ref("");
-const textInput = ref([] as string[]);
+// const textInput = ref([] as string[]);
+let todos = ref<string[]>([]);
 
 const emit = defineEmits(["addNewTodo"]);
 
 const addNewTodo = () => {
   if (newTextInput.value) {
-    textInput.value.push(newTextInput.value);
-    localStorage.setItem("inputData", JSON.stringify(textInput));
-    emit("addNewTodo", textInput.value);
+    todos.value.push(newTextInput.value);
+    localStorage.setItem("inputData", JSON.stringify(todos.value));
+    emit("addNewTodo", todos.value);
     newTextInput.value = "";
-    // (this as any).$ref.input.focus();
+    (this as any).$ref.input.focus();
   }
+  return { addNewTodo };
 };
+
+onMounted(() => {
+  const storedData = localStorage.getItem("inputData");
+  if (storedData) {
+    todos.value = JSON.parse(storedData);
+  }
+  console.log("=====>", todos);
+});
 </script>
 
 <style scoped lang="scss">
