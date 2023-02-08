@@ -1,5 +1,6 @@
 <!-- 메인 -->
 <template>
+  <!-- font-family: "Jua", sans-serif; -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
@@ -7,10 +8,12 @@
     rel="stylesheet"
   />
   <div class="main-todolist">
-    <div class="main-date"><TodoDate /></div>
-    <div class="main-todobox">
-      <TodoHeader @addNewTodo="onAddNewTodo" />
-      <TodoList :textInput="textInput" @addNewTodo="onAddNewTodo" />
+    <div>
+      <div class="main-date"><TodoDate /></div>
+      <div class="main-todobox">
+        <TodoHeader @addNewTodo="onAddNewTodo" />
+        <TodoList :textInput="textInput" @addNewTodo="onAddNewTodo" />
+      </div>
     </div>
   </div>
 </template>

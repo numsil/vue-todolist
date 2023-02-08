@@ -87,7 +87,7 @@ console.log(props.textInput);
 }
 .todo-text {
   font-family: "Jua", sans-serif;
-  color: #575655;
+  color: #727272;
 }
 .list-item input {
   width: 16px;

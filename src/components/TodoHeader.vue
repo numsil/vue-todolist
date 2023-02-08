@@ -71,7 +71,7 @@ const addNewTodo = () => {
   background-color: rgb(255, 255, 255, 0);
   width: 100%;
   border: none;
-  color: #575655;
+  color: #727272;
   outline: none;
   font-family: "Jua", sans-serif;
   border-bottom: 1px solid gray;

@@ -4,7 +4,7 @@
       <div class="current-date">{{ currentDate }}</div>
       <div class="current-time">{{ currentTime }}</div>
     </div>
-    <div class="current-dust">미세먼지 데이터</div>
+    <!-- <div class="current-dust">미세먼지 데이터</div> -->
   </div>
 </template>
 
