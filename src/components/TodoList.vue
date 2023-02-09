@@ -1,7 +1,7 @@
 <template>
   <ul class="list">
     <div class="list-box">
-      <li class="list-item" v-for="(todo, index) in props.todos">
+      <li class="list-item" v-for="(todo, index) in todos">
         <label class="list-item-label">
           <input type="checkbox" />
           <span class="todo-text">{{ todo }}</span>
@@ -22,27 +22,27 @@
 import { onMounted, ref } from "vue";
 import Icon from "./common/icon.vue";
 
-const props = defineProps({
-  todos: {
-    type: Array,
-    default: () => {},
-  },
-});
+// const props = defineProps({
+//   todos: {
+//     type: Array,
+//     default: () => {},
+//   },
+// });
 
+// const storedDate = ref("");
 // let todoData = ref();
-// // let todos = ref<string[]>([]);
+let todos = ref<string[]>([]);
 
 const handleClickDeleteButton = (index: number) => {
-  props.todos.splice(index, 1);
-  localStorage.setItem("inputData", JSON.stringify(props.todos));
+  todos.value.splice(index, 1);
+  localStorage.setItem("inputData", JSON.stringify(todos.value));
 };
 
 // onMounted(() => {
 //   const storedData = localStorage.getItem("inputData");
 //   if (storedData) {
-//     todoData.value = JSON.parse(storedData);
+//     props.todos = JSON.parse(storedData);
 //   }
-//   // console.log("=====>", todos);
 // });
 </script>
 

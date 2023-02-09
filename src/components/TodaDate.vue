@@ -8,51 +8,23 @@
   </div>
 </template>
 
-<script lang="ts">
-export default {
-  data() {
-    return {
-      currentDate: "",
-      currentTime: "",
-    };
-  },
-  mounted() {
-    this.updateDateTime();
-    setInterval(() => {
-      this.updateDateTime();
-    }, 1000);
-  },
-  methods: {
-    updateDateTime() {
-      const now = new Date();
-      this.currentDate = now.toLocaleDateString().slice(0, -1);
-      this.currentTime = now.toLocaleTimeString().slice(0, -3);
-      console.log("date", this.currentDate);
-    },
-  },
+<script setup lang="ts">
+import { onMounted, ref } from "vue";
+
+const currentDate = ref("");
+const currentTime = ref("");
+
+const updateDateTime = () => {
+  const now = new Date();
+  currentDate.value = now.toLocaleDateString().slice(0, -1);
+  currentTime.value = now.toLocaleTimeString().slice(0, -3);
+  console.log("date", currentDate.value);
 };
-// export default {
-//   data() {
-//     return {
-//       currentDate: "",
-//       currentTime: "",
-//     };
-//   },
-//   mounted() {
-//     this.updateDateTime();
-//     setInterval(() => {
-//       this.updateDateTime();
-//     }, 1000);
-//   },
-//   methods: {
-//     updateDateTime() {
-//       const now = new Date();
-//       this.currentDate = now.toLocaleDateString().slice(0, 10);
-//       this.currentTime = now.toLocaleTimeString().slice(0, 7);
-//       console.log("date", this.currentDate);
-//     },
-//   },
-// };
+
+onMounted(() => {
+  updateDateTime();
+  setInterval(updateDateTime, 1000);
+});
 </script>
 <style scoped lang="scss">
 .date-content {
