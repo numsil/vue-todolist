@@ -29,8 +29,8 @@ const props = defineProps({
   },
 });
 
-// let todos = ref("");
-// let todos = ref<string[]>([]);
+// let todoData = ref();
+// // let todos = ref<string[]>([]);
 
 const handleClickDeleteButton = (index: number) => {
   props.todos.splice(index, 1);
@@ -40,9 +40,9 @@ const handleClickDeleteButton = (index: number) => {
 // onMounted(() => {
 //   const storedData = localStorage.getItem("inputData");
 //   if (storedData) {
-//     todos.value = JSON.parse(storedData);
+//     todoData.value = JSON.parse(storedData);
 //   }
-//   console.log("=====>", todos);
+//   // console.log("=====>", todos);
 // });
 </script>
 

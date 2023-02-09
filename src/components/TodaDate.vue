@@ -25,8 +25,8 @@ export default {
   methods: {
     updateDateTime() {
       const now = new Date();
-      this.currentDate = now.toLocaleDateString().slice(0, 10);
-      this.currentTime = now.toLocaleTimeString().slice(0, 7);
+      this.currentDate = now.toLocaleDateString().slice(0, -1);
+      this.currentTime = now.toLocaleTimeString().slice(0, -3);
       console.log("date", this.currentDate);
     },
   },
