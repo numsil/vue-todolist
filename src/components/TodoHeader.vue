@@ -1,19 +1,21 @@
 <template>
   <div class="header">
     <h1 class="title">Todo List</h1>
-    <div class="add-task">
-      <input
-        type="text"
-        class="task-input"
-        v-model="newTextInput"
-        placeholder="할 일 작성"
-        ref="input"
-        @keypress.enter="addNewTodo"
-      />
-      <div class="icon-container">
-        <Icon type="plus" @click="addNewTodo" />
+    <form @submit.stop="addNewTodo">
+      <div class="add-task">
+        <input
+          type="text"
+          class="task-input"
+          v-model="newTextInput"
+          placeholder="할 일 작성"
+          ref="input"
+        />
+        <!-- @keypress.enter="addNewTodo" -->
+        <div class="icon-container">
+          <Icon type="plus" @click="addNewTodo" />
+        </div>
       </div>
-    </div>
+    </form>
   </div>
 </template>
 
@@ -22,14 +24,13 @@ import { onMounted, ref } from "vue";
 import Icon from "./common/icon.vue";
 
 const newTextInput = ref("");
-
 let todos = ref<string[]>([]);
 const input = ref();
 
 // const emit = defineEmits(["addNewTodo"]);
-
 const addNewTodo = () => {
   const getItem = localStorage.getItem("inputData");
+  // emit;
   if (newTextInput.value) {
     if (getItem) {
       todos.value = [...JSON.parse(getItem)];
@@ -39,11 +40,12 @@ const addNewTodo = () => {
     // emit("addNewTodo", todos.value);
     newTextInput.value = "";
   }
-  return { addNewTodo };
+  // return { addNewTodo };
 };
 
 onMounted(() => {
   input.value.focus();
+
   //   const storedData = localStorage.getItem("inputData");
   //   if (storedData) {
   //     todos.value = JSON.parse(storedData);
@@ -85,9 +87,7 @@ onMounted(() => {
   font-family: "Jua", sans-serif;
   border-bottom: 1px solid gray;
 }
-// .task-input input {
-//   color: gray !important;
-// }
+
 .icon-container {
   display: inline-block;
   position: relative;

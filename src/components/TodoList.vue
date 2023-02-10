@@ -23,23 +23,12 @@
 import { onMounted, ref } from "vue";
 import Icon from "./common/icon.vue";
 
-const props = defineProps({
-  todos: {
-    type: Array,
-    default: () => {},
-  },
-});
-
 let todos = ref<string[]>([]);
 
 const handleClickDeleteButton = (index: number) => {
   todos.value.splice(index, 1);
   localStorage.setItem("inputData", JSON.stringify(todos.value));
 };
-// const handleClickDeleteButton = (index: number) => {
-//   props.todos.splice(index, 1);
-//   localStorage.setItem("inputData", JSON.stringify(todos.value));
-// };
 
 onMounted(() => {
   const storedData = localStorage.getItem("inputData");

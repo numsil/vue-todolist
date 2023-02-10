@@ -2,8 +2,8 @@
   <div>
     <div class="main-date"><TodoDate /></div>
     <div class="main-todobox">
-      <TodoHeader @addNewTodo="onAddNewTodo" />
-      <TodoList :todos="todos" @addNewTodo="onAddNewTodo" />
+      <TodoHeader />
+      <TodoList />
     </div>
   </div>
 </template>
@@ -12,15 +12,6 @@
 import TodoHeader from "./TodoHeader.vue";
 import TodoList from "./TodoList.vue";
 import TodoDate from "./TodaDate.vue";
-import { ref } from "vue";
-
-const todos = ref("");
-// const todos = ref<string[]>("");
-
-const onAddNewTodo = (text: string) => {
-  todos.value = text;
-  // textInput = text;
-};
 </script>
 
 <style scoped lang="scss">
@@ -29,7 +20,6 @@ const onAddNewTodo = (text: string) => {
   flex-direction: column;
   width: 600px;
   height: 400px;
-  // border: 1px solid white;
   border-radius: 20px;
   margin: 0 auto;
   position: absolute;
