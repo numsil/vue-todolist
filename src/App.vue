@@ -9,27 +9,12 @@
   />
   <div class="main-todolist">
     <div>
-      <div class="main-date"><TodoDate /></div>
-      <div class="main-todobox">
-        <TodoHeader @addNewTodo="onAddNewTodo" />
-        <TodoList :todos="todos" @addNewTodo="onAddNewTodo" />
-      </div>
+      <Todo />
     </div>
   </div>
 </template>
 <script setup lang="ts">
-import { ref } from "vue";
-import TodoHeader from "./components/TodoHeader.vue";
-import TodoList from "./components/TodoList.vue";
-import TodoDate from "./components/TodaDate.vue";
-
-const todos = ref("");
-// const todos = ref<string[]>("");
-
-const onAddNewTodo = (text: string) => {
-  todos.value = text;
-  // textInput = text;
-};
+import Todo from "./components/Todo.vue";
 </script>
 
 <style scoped lang="scss">
