@@ -1,5 +1,6 @@
+b
 <template>
-  <div>
+  <div class="main-todo">
     <div class="main-date"><TodoDate /></div>
     <div class="main-todobox">
       <TodoHeader />
@@ -15,28 +16,22 @@ import TodoDate from "./TodaDate.vue";
 </script>
 
 <style scoped lang="scss">
-.main-todobox {
+.main-todo {
   display: flex;
   flex-direction: column;
   width: 600px;
-  height: 400px;
-  border-radius: 20px;
-  margin: 0 auto;
+  height: 700px;
+  // border-radius: 20px;
+  // margin: 0 auto;
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
 }
 .main-date {
-  display: flex;
-  // justify-content: center;
-  align-items: center;
-  position: absolute;
   margin-left: 30px;
-  width: 600px;
-  height: 150px;
-  top: 12%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  padding-bottom: 20px;
+}
+.main-todobox {
 }
 </style>
