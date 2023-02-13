@@ -4,15 +4,33 @@
       <div class="current-date">{{ currentDate }}</div>
       <div class="current-time">{{ currentTime }}</div>
     </div>
-    <div class="current-dust">미세먼지 데이터</div>
+    <div class="current-dust" v-for="item in dustData.dust" :key="item.id">
+      {{ item.stationName }}
+    </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import { onMounted, ref } from "vue";
+import { onMounted, reactive, ref } from "vue";
+import axios from "axios";
 
 const currentDate = ref("");
 const currentTime = ref("");
+
+const dustData = reactive({
+  dust: [] as any[],
+});
+
+const API_KEY =
+  "UeXBqyTjPcS1Ksf%2FLPNCFNbjqK55nMckPrhG1bSNPYdPwas%2Fu5u9TztERQlljzW9alMlWEC1KzNvCoNAbGPfnQ%3D%3D";
+const API_URL = "http://apis.data.go.kr/B552584/ArpltnStatsSvc";
+
+const getData = async () => {
+  const response = await axios.get(
+    `${API_URL}/getMsrstnAcctoRltmMesureDnsty?serviceKey=${API_KEY}&numOfRows=10&pageSize=10&pageNo=1&startPage=1&stationName=%EC%84%9C%EC%9A%B8&dataTerm=DAILY&ver=1.3`
+  );
+  dustData.dust = response.data;
+};
 
 const updateDateTime = () => {
   const now = new Date();
@@ -22,6 +40,7 @@ const updateDateTime = () => {
 };
 
 onMounted(() => {
+  getData();
   updateDateTime();
   setInterval(updateDateTime, 1000);
 });
