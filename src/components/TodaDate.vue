@@ -4,7 +4,7 @@
       <div class="current-date">{{ currentDate }}</div>
       <div class="current-time">{{ currentTime }}</div>
     </div>
-    <!-- <div class="current-dust">미세먼지 데이터</div> -->
+    <div class="current-dust">미세먼지 데이터</div>
   </div>
 </template>
 
@@ -18,7 +18,7 @@ const updateDateTime = () => {
   const now = new Date();
   currentDate.value = now.toLocaleDateString().slice(0, -1);
   currentTime.value = now.toLocaleTimeString().slice(0, -3);
-  console.log("date", currentDate.value);
+  // console.log("date", currentDate.value);
 };
 
 onMounted(() => {
@@ -29,9 +29,13 @@ onMounted(() => {
 <style scoped lang="scss">
 .date-content {
   display: flex;
-  //   flex-direction: row;
+  // flex-direction: row;
   justify-content: space-between;
+  width: 550px;
+  height: 150px;
   align-items: center;
+  border: 2px;
+  border-color: black;
 }
 .current-date {
   color: white;
@@ -49,6 +53,8 @@ onMounted(() => {
   align-items: flex-start;
 }
 .current-dust {
-  text-align: right;
+  color: white;
+  font-size: 20px;
+  font-family: "Jua", sans-serif;
 }
 </style>
