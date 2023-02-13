@@ -1,4 +1,3 @@
-b
 <template>
   <div class="main-todo">
     <div class="main-date"><TodoDate /></div>
