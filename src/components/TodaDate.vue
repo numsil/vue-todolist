@@ -17,9 +17,9 @@ import axios from "axios";
 const currentDate = ref("");
 const currentTime = ref("");
 
-// const dustData = reactive({
-//   dust: [] as any[],
-// });
+const dustData = reactive({
+  dust: [] as any[],
+});
 
 // const API_KEY =
 //   "UeXBqyTjPcS1Ksf%2FLPNCFNbjqK55nMckPrhG1bSNPYdPwas%2Fu5u9TztERQlljzW9alMlWEC1KzNvCoNAbGPfnQ%3D%3D";
@@ -32,6 +32,7 @@ const currentTime = ref("");
 //   dustData.dust = response.data;
 // };
 
+//날짜 및 시간
 const updateDateTime = () => {
   const now = new Date();
   currentDate.value = now.toLocaleDateString().slice(0, -1);
