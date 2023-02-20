@@ -1,5 +1,6 @@
 <template>
   <div class="main-todo">
+    <!-- <div class="main-date"><Sample /></div> -->
     <div class="main-date"><TodoDate /></div>
     <div class="main-todobox">
       <TodoHeader />
@@ -11,6 +12,8 @@
 <script setup lang="ts">
 import TodoHeader from "./TodoHeader.vue";
 import TodoList from "./TodoList.vue";
+// import Sample from "./sample.vue";
+
 import TodoDate from "./TodaDate.vue";
 </script>
 

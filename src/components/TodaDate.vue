@@ -30,16 +30,19 @@ const dustData = reactive({
 
 // console.log("dust", dustData);
 
-const API_KEY =
-  "UeXBqyTjPcS1Ksf%2FLPNCFNbjqK55nMckPrhG1bSNPYdPwas%2Fu5u9TztERQlljzW9alMlWEC1KzNvCoNAbGPfnQ%3D%3D";
-const API_URL = "http://apis.data.go.kr/B552584/ArpltnStatsSvc";
+// const API_KEY =
+//   "UeXBqyTjPcS1Ksf%2FLPNCFNbjqK55nMckPrhG1bSNPYdPwas%2Fu5u9TztERQlljzW9alMlWEC1KzNvCoNAbGPfnQ%3D%3D";
+// const API_URL = "http://apis.data.go.kr/B552584/ArpltnStatsSvc";
 
-const getData = async () => {
-  const response = await axios.get(
-    `${API_URL}/getMsrstnAcctoRltmMesureDnsty?serviceKey=${API_KEY}&numOfRows=10&pageSize=10&pageNo=1&startPage=1&stationName=%EC%84%9C%EC%9A%B8&dataTerm=DAILY&ver=1.3`
-  );
-  dustData.dust = response.data;
-};
+// const getData = async () => {
+//   const response = await axios.get(
+//     `${API_URL}/getMsrstnAcctoRltmMesureDnsty?serviceKey=${API_KEY}&numOfRows=10&pageSize=10&pageNo=1&startPage=1&stationName=%EC%84%9C%EC%9A%B8&dataTerm=DAILY&ver=1.3`
+//   );
+//   dustData.dust = response.data;
+//   // console.log("dust", response);
+// };
+
+// `http://apis.data.go.kr/B552584/ArpltnStatsSvc/getMsrstnAcctoRltmMesureDnsty?serviceKey=UeXBqyTjPcS1Ksf%2FLPNCFNbjqK55nMckPrhG1bSNPYdPwas%2Fu5u9TztERQlljzW9alMlWEC1KzNvCoNAbGPfnQ%3D%3D&numOfRows=10&pageSize=10&pageNo=1&startPage=1&stationName=%EC%84%9C%EC%9A%B8&dataTerm=DAILY&ver=1.3`;
 
 //날짜 및 시간
 const updateDateTime = () => {
@@ -49,42 +52,45 @@ const updateDateTime = () => {
   // console.log("date", currentDate.value);
 };
 
-// var xhr = new XMLHttpRequest();
-// console.log("dust", xhr);
-// var url =
-//   "http://apis.data.go.kr/B552584/ArpltnStatsSvc/getCtprvnMesureLIst"; /*URL*/
-// var queryParams =
-//   "?" + encodeURIComponent("serviceKey") + "=" + "서비스키"; /*Service Key*/
-// queryParams +=
-//   "&" + encodeURIComponent("returnType") + "=" + encodeURIComponent("xml"); /**/
-// queryParams +=
-//   "&" + encodeURIComponent("numOfRows") + "=" + encodeURIComponent("100"); /**/
-// queryParams +=
-//   "&" + encodeURIComponent("pageNo") + "=" + encodeURIComponent("1"); /**/
-// queryParams +=
-//   "&" + encodeURIComponent("itemCode") + "=" + encodeURIComponent("PM10"); /**/
-// queryParams +=
-//   "&" + encodeURIComponent("dataGubun") + "=" + encodeURIComponent("HOUR"); /**/
-// queryParams +=
-//   "&" +
-//   encodeURIComponent("searchCondition") +
-//   "=" +
-//   encodeURIComponent("MONTH"); /**/
-// xhr.open("GET", url + queryParams);
-// xhr.onreadystatechange = function () {
-//   if (this.readyState == 4) {
-//     alert(
-//       "Status: " +
-//         this.status +
-//         "nHeaders: " +
-//         JSON.stringify(this.getAllResponseHeaders()) +
-//         "nBody: " +
-//         this.responseText
-//     );
-//   }
-// };
+const xhr = new XMLHttpRequest();
+console.log("dust", xhr);
+const url =
+  "http://apis.data.go.kr/B552584/ArpltnStatsSvc/getCtprvnMesureLIst"; /*URL*/
+let queryParams =
+  "?" +
+  encodeURIComponent("serviceKey") +
+  "=" +
+  "UeXBqyTjPcS1Ksf%2FLPNCFNbjqK55nMckPrhG1bSNPYdPwas%2Fu5u9TztERQlljzW9alMlWEC1KzNvCoNAbGPfnQ%3D%3D"; /*Service Key*/
+queryParams +=
+  "&" + encodeURIComponent("returnType") + "=" + encodeURIComponent("xml"); /**/
+queryParams +=
+  "&" + encodeURIComponent("numOfRows") + "=" + encodeURIComponent("100"); /**/
+queryParams +=
+  "&" + encodeURIComponent("pageNo") + "=" + encodeURIComponent("1"); /**/
+queryParams +=
+  "&" + encodeURIComponent("itemCode") + "=" + encodeURIComponent("PM10"); /**/
+queryParams +=
+  "&" + encodeURIComponent("dataGubun") + "=" + encodeURIComponent("HOUR"); /**/
+queryParams +=
+  "&" +
+  encodeURIComponent("searchCondition") +
+  "=" +
+  encodeURIComponent("MONTH"); /**/
+xhr.open("GET", url + queryParams);
+xhr.onreadystatechange = function () {
+  if (this.readyState == 4) {
+    alert(
+      "Status: " +
+        this.status +
+        "nHeaders: " +
+        JSON.stringify(this.getAllResponseHeaders()) +
+        "nBody: " +
+        this.responseText
+    );
+  }
+};
 
-// xhr.send("");
+xhr.send("");
 
 onMounted(() => {
   // getData();
