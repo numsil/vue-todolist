@@ -41,6 +41,7 @@ const getData = async () => {
   dustData.dust = response.data;
 };
 
+//날짜 및 시간
 const updateDateTime = () => {
   const now = new Date();
   currentDate.value = now.toLocaleDateString().slice(0, -1);
@@ -86,7 +87,7 @@ const updateDateTime = () => {
 // xhr.send("");
 
 onMounted(() => {
-  getData();
+  // getData();
   updateDateTime();
   setInterval(updateDateTime, 1000);
 });
